@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .all {
+            width: 1000px;
+            height: 500px;
+            background-color: blueviolet;
+            margin: 50px auto;
+        }
+
+        .left {
+            width: 100px;
+            height: 500px;
+            background-color: black;
+            float: left;
+        }
+
+        .right {
+            width: 900px;
+            height: 500px;
+            background-color: aliceblue;
+            float: left;
+            position: relative;
+            
+        }
+.right .picture{
+    width: 900px;
+            height: 500px;
+    overflow: hidden;
+}
+        .point {
+            width: 60px;
+            height: 10px;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            
+        }
+
+        .point span {
+            width: 10px;
+            height: 10px;
+            background-color: aqua;
+            display: inline-block;
+            border-radius: 50%;
+
+
+        }
+
+        .btn {
+            height: 500px;
+            background-color: yellow;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn button {
+            height: 25%;
+            width: 100%;
+            background-color: aliceblue;
+        }
+
+        ul {
+            height: 280px;
+            width: 50%;
+
+        }
+
+        ul li {
+            list-style: none;
+            width: 100px;
+            height: 100%;
+            text-align: center;
+            line-height: 280px;
+            font-size: 20px;
+            font-weight: 900;
+            display: none;
+            background-color: skyblue;
+            position: absolute;
+            top:0;
+            left:0;
+
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .active {
+            background-color: hotpink !important;
+        }
+
+        .right img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+         <div class="left">
+            <div class="btn">
+                <!-- 按钮大框 -->
+              <button>考试</button>
+                <button>前端开发</button>
+                <button>编程语言</button>
+                <button>云计算</button> 
+                <!-- 四个按钮 -->
+             </div> 
+
+         </div> 
+        <div class="right">
+            <div class="point">
+                <!-- 点的大框 -->
+                <span class="swiper1"></span>
+                <span class="swiper2"></span>
+                <span class="swiper3"></span>
+                <!-- dian -->
+            </div>
+            <div class="picture">
+                <div class="back"><img src="images/nature-1.jpg" alt=""></div>
+                
+            </div>
+            <!-- 背景图 -->
+            <ul>
+                <li>考试</li>
+                <li>前端开发</li>
+                <li>编程语言</li>
+                <li>云计算</li>
+
+            </ul>
+            <!-- 遮罩层 -->
+            
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // function $(ele, isAll) {
+        //     if (isAll) {
+        //         return document.querySelectorAll(ele)
+        //     } else {
+        //         return document.querySelector(ele)
+        //     }
+        // }
+        // 获取函数
+        var aBtn = document.querySelectorAll('.btn>button')
+        var aCon = document.querySelectorAll('ul>li')
+       
+        for (var i = 0; i < aBtn.length; i++) {
+
+            aBtn[i].index = i
+            aBtn[i].onclick = function () {
+
+                var index = this.index
+
+                for (var j = 0; j < aBtn.length; j++) {
+                    aBtn[j].className = ''
+                    aCon[j].className = ''
+                }
+
+                this.className = 'active'
+                aCon[index].className = 'show'
+            }
+        }
+        // 选项卡
+        let arrPic=['images/nature-1.jpg', 'images/nature-2.jpg', 'images/nature-3.jpg']
+       let pic1=document.querySelector('.back>img')
+       
+        let swiper1=document.querySelector('.swiper1')
+        let swiper2=document.querySelector('.swiper2')
+        let swiper3=document.querySelector('.swiper3')
+        
+        swiper1.onmouseover=()=>{
+            pic1.src=arrPic[0]
+            
+        }
+        swiper2.onmouseover=()=>{
+            pic1.src=arrPic[1]
+            
+        }
+        swiper3.onmouseover=()=>{
+            pic1.src=arrPic[2]
+            
+        }
+        
+
+        
+        
+    </script>
+</body>
+
+</html>
